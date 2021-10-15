@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_experiencia")
 public class Experiencia implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
@@ -17,9 +16,6 @@ public class Experiencia implements Serializable {
     private String formaContratacao;
     private LocalDateTime dataInicio;
     private LocalDateTime dataConclusao;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_candidato")
-    private Candidato candidato;
 
     public Experiencia() {
     }
@@ -32,7 +28,6 @@ public class Experiencia implements Serializable {
         this.formaContratacao = formaContratacao;
         this.dataInicio = dataInicio;
         this.dataConclusao = dataConclusao;
-        this.candidato = candidato;
     }
 
     public Long getId() {
@@ -91,14 +86,6 @@ public class Experiencia implements Serializable {
         this.dataConclusao = dataConclusao;
     }
 
-    public Candidato getCandidato() {
-        return candidato;
-    }
-
-    public void setCandidato(Candidato candidato) {
-        this.candidato = candidato;
-    }
-
     @Override
     public String toString() {
         return "Experiencia{" +
@@ -109,7 +96,6 @@ public class Experiencia implements Serializable {
                 ", formaContratacao='" + formaContratacao + '\'' +
                 ", dataInicio=" + dataInicio +
                 ", dataConclusao=" + dataConclusao +
-                ", candidato=" + candidato +
                 '}';
     }
 }

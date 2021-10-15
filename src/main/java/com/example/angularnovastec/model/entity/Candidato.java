@@ -30,8 +30,8 @@ public class Candidato implements Serializable {
     private String email;
     private String telefone;
     private Boolean notificacao;
-    @OneToMany(mappedBy = "candidato", cascade = CascadeType.PERSIST)
-    private List<Experiencia> experiencias = new ArrayList();
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Experiencia> experiencias = new ArrayList();
 
     public Candidato() {
     }
@@ -231,6 +231,7 @@ public class Candidato implements Serializable {
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", notificacao=" + notificacao +
+                ", experiencias=" + experiencias +
                 '}';
     }
 }
